@@ -1,0 +1,18 @@
+.unit {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    position: absolute;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.unit.opponent {
+    -moz-transform: scale(-1,1);
+    -o-transform: scale(-1,1);
+    -webkit-transform: scale(-1,1);
+    transform: scale(-1,1);
+}
+
+.unit.selected {
+	border: 1px solid red;
+}

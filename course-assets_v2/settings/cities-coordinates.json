@@ -1,0 +1,44 @@
+{
+    "cities": [
+        {
+            "name": "Voronezh",
+            "latitude": 51.6717,
+            "longitude": 39.2106
+        },
+        {
+            "name": "Dnipropetrovsk",
+            "latitude": 48.4500,
+            "longitude": 34.9833
+        },
+        {
+            "name": "Kyiv",
+            "latitude": 50.4500,
+            "longitude": 30.5233
+        },
+        {
+            "name": "Odessa",
+            "latitude": 46.4667,
+            "longitude": 30.7333
+        },
+        {
+            "name": "Saint Petersburg",
+            "latitude": 59.9500,
+            "longitude": 30.3000
+        },
+        {
+            "name": "Kharkiv",
+            "latitude": 50.0045,
+            "longitude": 36.2314
+        },
+        {
+            "name": "Kherson",
+            "latitude": 46.6333,
+            "longitude": 32.5833
+        },
+        {
+            "name": "Lviv",
+            "latitude": 49.8500,
+            "longitude": 24.0167
+        }
+    ]
+}

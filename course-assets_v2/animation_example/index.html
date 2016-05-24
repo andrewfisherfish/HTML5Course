@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS3 Keyframe Animation Demo</title>
+    <link rel="stylesheet" type="text/css" href="styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles/archangel.css" />
+    <link rel="stylesheet" type="text/css" href="styles/crusader.css" />
+    <link rel="stylesheet" type="text/css" href="styles/halberdier.css" />
+    
+    <style>
+        #demoUnit {
+            position: absolute;
+            left: 50%;
+            top: 200px;
+        }
+        /* the dot displayes where the demoUnit is */
+        #dot {
+            position: absolute;
+            left: 50%;
+            top: 200px;
+            
+            width: 3px;
+            height: 3px;
+            border: 1px solid green;
+        }
+        
+        /* some styles to make this demo pretty */
+        body {
+            margin: 0;
+        }
+        #controls {
+            width: 800px;
+            height: 40px;
+            margin: 0 auto 0 auto;
+            background-color: #FAFAFA;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 2px 4px 12px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        #controls * {
+            margin-top: 8px;
+        }
+        #controls label {
+            margin-right: 8px;
+        }
+    </style>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="animations.js"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            var config = {
+                // Please find full unit settings in the "settings/units.json" file
+                units: {
+                    halberdier: {"name": "Halberdier"},
+                    crusader:   {"name": "Crusader"},
+                    archangel:  {"name": "Archangel"}
+                }
+            }
+        
+            var $du = $('#demoUnit .unit');
+            
+            // fill in the unit types
+            var $ut = $('#unitType');
+            for (var i in config.units) {
+                $ut.append( $('<option>').attr('value', i).text( config.units[i].name ) );
+            }
+            
+            // replace the unit type when the select box is changed
+            $ut.change(function() {
+                var newClass =  $(this).val();
+                $du.fadeOut('fast', function() {
+                    for (var i in config.units) {
+                        $du.removeClass(i);
+                    }
+                    $du.addClass(newClass).fadeIn();
+                });
+            });
+            $ut.trigger('change');
+            
+            // select the unit
+            $('.unit').click(function(event) {
+                $( this ).toggleClass('selected');
+            });
+            
+            // set or unset different classes
+            $('#bOpponent').click(function(){
+                $du.toggleClass('opponent');
+            });
+            
+            $('#bRest').click(function(){
+                $du.toggleClass('rest');
+            });
+            
+            $('#bWalk').click(function(){
+                $du.toggleClass('walk');
+            });
+            
+            
+            // play animations
+            $('#bAttack').click(function(){
+                play( $du, 'attack');
+                
+                // You can make the animation slowly. Also you can use callback function.
+                // play( $du, 'attack', 4000, function(){alert('finish')} );
+            });
+            
+            $('#bDefence').click(function(){
+                play( $du, 'defence');
+            });
+            
+            $('#bMove').click(function(){
+                play( $du, 'walk');
+            });
+            
+            $('#bDie').click(function(){
+                play( $du, 'die');
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <section id="controls">
+        <label for="unitType">Unit:
+            <select id="unitType"></select>
+        </label>
+        
+        <input id="bOpponent" type="checkbox" />
+        <label for="bOpponent">Opponent</label>
+        
+        <input id="bRest" type="checkbox" checked="checked"/>
+        <label for="bRest">Rest</label>
+        
+        <input id="bWalk" type="checkbox"/>
+        <label for="bWalk">Walk</label>
+
+        <button id="bAttack">Attack</button>
+        <button id="bDefence">Defence</button>
+        <button id="bMove">Move</button>
+        <button id="bDie">Die</button>
+    </section>
+    
+    <div id="demoUnit">
+        <div class="unit rest"></div>
+    </div>
+    <div id="dot"></div>
+    
+</body>
+</html>
