@@ -53,3 +53,17 @@ var notifsDemo = (function() {
         console.log('access denied');
     }
 }());
+
+
+var draggerDropper = (function() {
+    if (Modernizr.draganddrop) {
+        // Browser supports HTML5 DnD.
+    } else {
+        // Fallback to a library solution.
+    }
+
+    document.addEventListener('dragstart', function(event) {
+        event.dataTransfer.setData('text', 'Customized text');
+        event.dataTransfer.effectAllowed = 'copy';
+    }, false);
+}());
