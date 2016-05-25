@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -11,6 +12,14 @@
     <input type="date" min="2010-08-14" max="2011-08-14" value="2010-08-14" />
 </body>
 
-<script type="text/javascript" src="app.js"></script>
+<script id="worker1">
+    this.addEventListener('message', function(e) {
+        console.log(e.data);
+
+        this.postMessage(e.data + ' Resp');
+    }.bind(this));
+</script>
+
+<script type="text/javascript" src="./content/app.js"></script>
 
 </html>

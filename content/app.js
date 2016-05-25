@@ -22,7 +22,7 @@ var workerTest = (function() {
     myWorker.postMessage('some message');
 
     myWorker.addEventListener('message', function(e) {
-        alert(e.data);
+        console.log(e.data);
     });
 
 }());
@@ -46,6 +46,10 @@ var notifsDemo = (function() {
             if (permission === "granted") {
                 var notification = new Notification("Hi there!");
             }
+        }, function() {
+            console.log('access default');
         });
+    } else {
+        console.log('access denied');
     }
 }());
