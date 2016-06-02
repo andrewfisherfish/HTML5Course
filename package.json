@@ -1,0 +1,26 @@
+{
+  "name": "html5course",
+  "version": "1.0.0",
+  "description": "learning",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "^3.4.1",
+    "http": "0.0.0",
+    "serve-static": "^1.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewfisherfish/HTML5Course.git"
+  },
+  "author": "andriy rybak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewfisherfish/HTML5Course/issues"
+  },
+  "homepage": "https://github.com/andrewfisherfish/HTML5Course#readme"
+}

@@ -154,15 +154,25 @@ var draggerDropper = (function() {
 }());
 
 
+//http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis
+//http://www.html5rocks.com/en/tutorials/file/filesystem/
 var fileWriter = (function() {
+    // Check for support.
+    if (window.requestFileSystem) {
+
+    } else {
+        console.log('fileAPI not supported');
+        return;
+    }
+
     var opt_errorHandler = function() {
 
     };
-    
+
     window.requestFileSystem(window.TEMPORARY, 1024 * 1024, function(fs) {
 
         // fs.root is a DirectoryEntry object.
-        fs.root.getFile('log.txt', {
+        fs.root.getFile('someVeryCustomName.txt', {
             create: true
         }, function(fileEntry) {
 
@@ -180,4 +190,67 @@ var fileWriter = (function() {
         });
 
     }, opt_errorHandler);
+}());
+
+
+var geoLocator = (function() {
+    // check for Geolocation support
+    if (navigator.geolocation) {
+        console.log('Geolocation is supported!');
+    } else {
+        console.log('Geolocation is not supported for this Browser/OS version yet.');
+        return;
+    }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // km
+        var dLat = (lat2 - lat1).toRad();
+        var dLon = (lon2 - lon1).toRad();
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        return d;
+    }
+
+    Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+    };
+
+    var errorsHandler = function() {
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from locaton provider)
+        //   3: timed out
+    };
+
+    var startPos;
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        startPos = position;
+        document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+        document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    }, errorsHandler);
+
+    navigator.geolocation.watchPosition(function(position) {
+        document.getElementById('currentLat').innerHTML = position.coords.latitude;
+        document.getElementById('currentLon').innerHTML = position.coords.longitude;
+    });
+}());
+
+//http://shapeshed.com/html5-speech-recognition-api/
+//https://github.com/Daniel-Hug/speech-input/blob/gh-pages/speech-input.js
+//https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API
+var speechRecognition = (function() {
+    var recognition = new webkitSpeechRecognition();
+    recognition.onresult = function(event) {
+        console.log(event);
+    };
+
+    var startSpeechRecognition = document.getElementById('startSpeechRecognition');
+    startSpeechRecognition.addEventListener('click', function(e) {
+        recognition.start();
+    });
 }());

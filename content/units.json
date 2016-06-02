@@ -1,0 +1,44 @@
+{
+    "units":
+        [
+            {
+                "name": "Halberdiers",
+                "attack": 6,
+                "defence": 5,
+                "hp": 10,
+                "damage": 2.50,
+                "speed": 5,
+                "level": 1,
+                "unit-upgraded": true,
+                "castle": "Castle",
+                "icon": "halberdier.png",
+                "type": "halberdier"
+            },
+            {
+                "name": "Crusaders",
+                "attack": 12,
+                "defence": 12,
+                "hp": 35,
+                "damage": 8.50,
+                "speed": 6,
+                "level": 4,
+                "unit-upgraded": true,
+                "castle": "Castle",
+                "icon": "crusader.png",
+                "type": "crusader"
+            },
+            {
+                "name": "Archangels",
+                "attack": 30,
+                "defence": 30,
+                "hp": 250,
+                "damage": 50.00,
+                "speed": 18,
+                "level": 7,
+                "unit-upgraded": true,
+                "castle": "Castle",
+                "icon": "archangel.png",
+                "type": "archangel"
+            }
+        ]
+}

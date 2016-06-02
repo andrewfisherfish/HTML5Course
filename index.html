@@ -2,8 +2,10 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./content/styles.css">
+    <title>HTML5 Sandbox</title>
 </head>
 
 <body>
@@ -21,16 +23,45 @@
         </div>
         <div class="dropable-container"></div>
     </div>
+
+    <div class="section">
+        <h4 id="startLat"></h4>
+        <h4 id="startLon"></h4>
+
+        <h4 id="currentLat"></h4>
+        <h4 id="currentLon"></h4>
+    </div>
+
+    <div class="section">
+        <button id="startSpeechRecognition">start Speech Recognition</button>
+    </div>
+
+    <div class="section">
+        <h1>My fantastic site</h1>
+        <section>
+            <h1>About me</h1>
+            <p>I am a man who lives a fascinating life. Oh the stories I could tell you...</p>
+            <section>
+                <h1>What I do for a living</h1>
+                <p>I sell enterprise-managed ant farms.</p>
+            </section>
+        </section>
+        <section>
+            <h1>Contact</h1>
+            <p>Shout my name and I will come to you.</p>
+        </section>
+    </div>
+
+    <script type="text/javascript" id="worker1">
+        this.addEventListener('message', function(e) {
+            console.log(e.data);
+
+            this.postMessage(e.data + ' Resp');
+        }.bind(this));
+    </script>
+
+    <script type="text/javascript" src="./content/Base.js"></script>
+    <script type="text/javascript" src="./content/app.js"></script>
 </body>
-
-<script id="worker1">
-    this.addEventListener('message', function(e) {
-        console.log(e.data);
-
-        this.postMessage(e.data + ' Resp');
-    }.bind(this));
-</script>
-
-<script type="text/javascript" src="./content/app.js"></script>
 
 </html>
