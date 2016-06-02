@@ -3,17 +3,23 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./content/styles.css">
 </head>
 
 <body>
-    <div>
+    <div class="section">
         <textarea name="name" rows="8" cols="40" id="text"></textarea>
-        <button id="do">TEST</button>
+        <div>
+            <button id="do">TEST</button>
+        </div>
     </div>
-    <div>
-        <div class="dragable-container" draggable="true"></div>
-        <div class="dragable-container" draggable="true"></div>
-        <div class="dragable-container" draggable="true"></div>
+    <div class="section">
+        <div class="dropable-container">
+            <div class="dragable-container" draggable="true" id="1">1</div>
+            <div class="dragable-container" draggable="true" id="2">2</div>
+            <div class="dragable-container" draggable="true" id="3">3</div>
+        </div>
+        <div class="dropable-container"></div>
     </div>
 </body>
 
